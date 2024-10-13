@@ -1,13 +1,69 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <link rel="stylesheet" href="styleMain.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Calculadora de Investimentos</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
+    <section class="inputs">
+      <h1>Calculadora de Investimentos</h1>
+
+      <form action="">
+        <div class="type-1">
+          <p>Investimento Inicial</p>
+          <input class="input1" type="text" value="R$" disabled />
+          <input class="input2" type="number" placeholder="0.00" />
+        </div>
+
+        <div class="type-1">
+          <p>Aportes Adicionais</p>
+          <input class="input1" type="text" value="R$" disabled />
+          <input class="input2" type="number" placeholder="0.00" />
+        </div>
+
+        <div class="type-2">
+          <p>Prazo</p>
+          <input
+            class="input1"
+            id="term"
+            type="number"
+            placeholder="0.00"
+            required
+          />
+          <select name="term" id="term-period">
+            <option value="monthly">Mensal</option>
+            <option value="yearly">Anual</option>
+          </select>
+        </div>
+
+        <div class="type-3">
+          <p>Rentabilidade</p>
+          <input class="input1" type="text" value="%" disabled />
+          <input class="input2" type="number" placeholder="0.00" />
+          <select name="profitability" id="profitability-period">
+            <option value="monthly">Mensal</option>
+            <option value="yearly">Anual</option>
+          </select>
+        </div>
+
+        <div class="type-1">
+          <p>Imposto sobre Lucro</p>
+          <input class="input1" type="text" value="%" disabled />
+          <input class="input2" type="number" placeholder="0" />
+        </div>
+      </form>
+    </section>
+
+    <section>
+      <div class="pie-chart">
+        <h2>Resultado Total</h2>
+      </div>
+      <div class="bar-graph">
+        <h2>Resultado em Períodos</h2>
+      </div>
+    </section>
   </body>
 </html>
