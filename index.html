@@ -14,8 +14,10 @@
       <form action="">
         <div class="type-1">
           <p>Investimento Inicial</p>
-          <input class="input1" type="text" value="R$" disabled />
-          <input class="input2" type="number" placeholder="0.00" />
+          <div class="around">
+            <input class="input1" type="text" value="R$" disabled />
+            <input class="input2" type="number" placeholder="0.00" required />
+          </div>
         </div>
 
         <div class="type-1">
@@ -26,17 +28,19 @@
 
         <div class="type-2">
           <p>Prazo</p>
-          <input
-            class="input1"
-            id="term"
-            type="number"
-            placeholder="0.00"
-            required
-          />
-          <select name="term" id="term-period">
-            <option value="monthly">Mensal</option>
-            <option value="yearly">Anual</option>
-          </select>
+          <div class="around">
+            <input
+              class="input1"
+              id="term"
+              type="number"
+              placeholder="0"
+              required
+            />
+            <select name="term" id="term-period">
+              <option value="monthly">Mensal</option>
+              <option value="yearly">Anual</option>
+            </select>
+          </div>
         </div>
 
         <div class="type-3">
@@ -52,7 +56,12 @@
         <div class="type-1">
           <p>Imposto sobre Lucro</p>
           <input class="input1" type="text" value="%" disabled />
-          <input class="input2" type="number" placeholder="0" />
+          <input class="input2" type="number" placeholder="0.00" />
+        </div>
+
+        <div class="buttons-form">
+          <button class="button-calculation" type="submit">Calcular</button>
+          <button class="button-clear">Limpar</button>
         </div>
       </form>
     </section>
@@ -65,5 +74,7 @@
         <h2>Resultado em Períodos</h2>
       </div>
     </section>
+
+    <script src="main.js"></script>
   </body>
 </html>
