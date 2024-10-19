@@ -1,61 +1,57 @@
-const buttonCalculation = document.getElementsByClassName("button-calculation");
-
-document.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const initialInvestment = document.getElementById("initial-investment");
-  const contribution = document.getElementById("contribution");
-  const term = document.getElementById("term");
-  const termPeriod = document.getElementById("term-period");
-  const profitability = document.getElementById("profitability");
-  const profitabilityPeriod = document.getElementById("profitability-period");
-  const tax = document.getElementById("tax");
-
-  let termNew = term.value;
-  if (termPeriod.value === "yearly") {
-    termNew = termNew * 12;
+export function generateReturnArray(
+  initialInvestment = 0,
+  contribution = 0,
+  term = 0,
+  termPeriod = "monthly",
+  profitability = 0,
+  profitabilityP = "monthly",
+  tax = 0
+) {
+  //Fazendo o reconhecimento do tipo de input dos períodos e convertendo quando necessário
+  function returningProfitability(n) {
+    return n ** (1 / 12);
   }
+  const termNew = termPeriod === "monthly" ? term : term * 12;
 
-  let profitabilityNew = profitability.value;
-  if (profitabilityPeriod.value === "yearly") {
-    profitabilityNew = profitabilityNew / 12;
-  }
+  const profitabilityN =
+    profitabilityP === "monthly"
+      ? Number(profitability / 100)
+      : returningProfitability(Number(1 + profitability / 100)) - 1;
+
+  const taxN = returningProfitability(Number(tax / 100));
 
   const investmentObject = {
-    investmentMonthly: Number(initialInvestment.value),
+    investmentMonthly: Number(initialInvestment),
     monthlyIncome: 0,
-    termMonthly: 0,
-    monthlyTax: 0,
-    totalAmount: Number(initialInvestment.value),
+    monthlyPeriod: 0,
+    totalInterestReturn: 0,
+    totalAmount: Number(initialInvestment),
   };
 
-  const investmentArray = [];
-  investmentArray.push(investmentObject);
-  // console.log(investmentArray);
+  const investmentArray = [investmentObject];
+  // investmentArray.push(investmentObject); ou poderia usar um push
 
   for (let n = 1; n <= termNew; n++) {
-    const obj = {
-      investmentMonthly:
-        investmentArray[n - 1].investmentMonthly + Number(contribution.value),
-      monthlyIncome:
-        investmentArray[n - 1].totalAmount * (Number(profitabilityNew) / 100),
-      termMonthly: n,
-      monthlyTax:
-        investmentArray[n - 1].totalAmount *
-        (Number(profitabilityNew) / 100) *
-        Number(tax.value / 100),
-      totalAmount:
-        investmentArray[n - 1].investmentMonthly +
-        Number(contribution.value) +
-        investmentArray[n - 1].totalAmount * (Number(profitabilityNew) / 100) -
-        investmentArray[n - 1].totalAmount *
-          (Number(profitabilityNew) / 100) *
-          Number(tax.value / 100),
-    };
-    investmentArray.push(obj);
+    const investmentMonthly =
+      Number(investmentArray[n - 1].investmentMonthly) + Number(contribution);
+    const monthlyIncome = Number(
+      investmentArray[n - 1].totalAmount * profitabilityN
+    );
+    const monthlyPeriod = n;
+    const totalInterestReturn =
+      monthlyIncome + investmentArray[n - 1].totalInterestReturn;
+    const totalAmount = investmentMonthly + totalInterestReturn;
+
+    investmentArray.push({
+      investmentMonthly: investmentMonthly,
+      monthlyIncome: monthlyIncome,
+      monthlyPeriod: monthlyPeriod,
+      totalInterestReturn: totalInterestReturn,
+      totalAmount: totalAmount,
+    });
   }
 
-  console.log(investmentArray);
-});
+  return investmentArray;
+}
 
 // adcionando comentário

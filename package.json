@@ -1,5 +1,5 @@
 {
-  "name": "calculadora-de-investimento---parte2",
+  "name": "calculadoradeinvestimento",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,5 +13,8 @@
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
     "vite": "^5.4.8"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.5"
   }
 }

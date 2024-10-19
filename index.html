@@ -11,11 +11,11 @@
     <section class="inputs">
       <h1>Calculadora de Investimentos</h1>
 
-      <form>
+      <form id="investment-form">
         <div class="type-1">
           <p>Investimento Inicial</p>
           <div class="around">
-            <input class="input1" type="text" value="R$" disabled />
+            <input class="input1 height" type="text" value="R$" disabled />
             <input
               id="initial-investment"
               class="input2"
@@ -28,7 +28,7 @@
 
         <div class="type-1">
           <p>Aportes Adicionais</p>
-          <input class="input1" type="text" value="R$" disabled />
+          <input class="input1 height" type="text" value="R$" disabled />
           <input
             id="contribution"
             class="input2"
@@ -39,6 +39,7 @@
 
         <div class="type-2">
           <p>Prazo</p>
+
           <div class="around">
             <input
               class="input1"
@@ -56,41 +57,50 @@
 
         <div class="type-3">
           <p>Rentabilidade</p>
-          <input class="input1" type="text" value="%" disabled />
-          <input
-            id="profitability"
-            class="input2"
-            type="number"
-            placeholder="0.00"
-          />
-          <select name="profitability" id="profitability-period">
-            <option value="monthly">Mensal</option>
-            <option value="yearly">Anual</option>
-          </select>
+          <div>
+            <input class="input1 height" type="text" value="%" disabled />
+            <input
+              id="profitability"
+              class="input2"
+              type="number"
+              placeholder="0.00"
+            />
+            <select name="profitability" id="profitability-period">
+              <option value="monthly">Mensal</option>
+              <option value="yearly">Anual</option>
+            </select>
+          </div>
         </div>
 
         <div class="type-1">
           <p>Imposto sobre Lucro</p>
-          <input class="input1" type="text" value="%" disabled />
+          <input class="input1 height" type="text" value="%" disabled />
           <input id="tax" class="input2" type="number" placeholder="0.00" />
         </div>
 
         <div class="buttons-form">
-          <button class="button-calculation" type="submit">Calcular</button>
+          <button class="button-calculation" id="click" form="">
+            Calcular
+          </button>
           <button class="button-clear">Limpar</button>
         </div>
       </form>
     </section>
 
     <section class="graph">
-      <div class="pie-chart">
-        <h2>Resultado Total</h2>
-      </div>
-      <div class="bar-graph">
-        <h2>Resultado em Períodos</h2>
+      <div class="charts">
+        <div class="pie-chart">
+          <h2>Resultado Total</h2>
+          <canvas id="doughnut"> </canvas>
+        </div>
+        <div class="bar-graph">
+          <h2>Resultado em Períodos</h2>
+          <canvas id="bar"></canvas>
+        </div>
       </div>
     </section>
 
-    <script src="main.js"></script>
+    <script type="module" src="main.js"></script>
+    <script type="module" src="chartsArquivo.js"></script>
   </body>
 </html>
