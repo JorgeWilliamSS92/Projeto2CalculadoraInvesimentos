@@ -34,12 +34,17 @@ function generate(event) {
     return Object.keys(obj).length === 0;
   }
 
+  const arrayNew = arraytesting[arraytesting.length - 1];
+  console.log(arrayNew);
+
+  function fix(n) {
+    return n.toFixed(2);
+  }
+
   if (!checking(chart1) && !checking(chart2)) {
     chart1.destroy();
     chart2.destroy();
   }
-
-  console.log(arraytesting);
 
   chart1 = new Chart(doughnut, {
     type: "doughnut",
@@ -48,7 +53,11 @@ function generate(event) {
       datasets: [
         {
           label: "Valor R$",
-          data: [300, 50, 100],
+          data: [
+            fix(arrayNew.investmentMonthly),
+            fix(arrayNew.totalInterestReturn),
+            fix(arrayNew.totalInterestReturn * (tax / 100)),
+          ],
           backgroundColor: [
             "rgb(255, 99, 132)",
             "rgb(54, 162, 235)",
@@ -63,37 +72,29 @@ function generate(event) {
   chart2 = new Chart(bar, {
     type: "bar",
     data: {
-      labels: ["labels", "novo", "velho", "testando"],
+      labels: arraytesting.map((month) => month.monthlyPeriod),
       datasets: [
         {
-          label: "My First Dataset",
-          data: [65, 59, 80, 81, 56, 55, 40],
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 205, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(201, 203, 207, 0.2)",
-          ],
-          borderColor: [
-            "rgb(255, 99, 132)",
-            "rgb(255, 159, 64)",
-            "rgb(255, 205, 86)",
-            "rgb(75, 192, 192)",
-            "rgb(54, 162, 235)",
-            "rgb(153, 102, 255)",
-            "rgb(201, 203, 207)",
-          ],
-          borderWidth: 1,
+          label: "Investimento",
+          data: arraytesting.map((invested) => fix(invested.investmentMonthly)),
+
+          backgroundColor: "rgba(54, 162, 235)",
+        },
+        {
+          label: "Rendimento",
+          data: arraytesting.map((returnV) => fix(returnV.totalInterestReturn)),
+          backgroundColor: "rgba(75, 192, 192)",
         },
       ],
     },
     options: {
+      responsive: true,
       scales: {
+        x: {
+          stacked: true,
+        },
         y: {
-          beginAtZero: true,
+          stacked: true,
         },
       },
     },
