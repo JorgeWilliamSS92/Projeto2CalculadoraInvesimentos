@@ -21,6 +21,8 @@ body {
   grid-template-columns: 1fr 3fr;
   height: 100dvh;
 
+  box-sizing: border-box;
+
   & .inputs {
     display: grid;
     grid-template-rows: 1fr 2.5fr;
@@ -169,19 +171,38 @@ body {
   }
 
   & .graph {
-    height: 100dvh;
-    width: 70dvw;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+    & .buttons-left-right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 5rem;
+      font-weight: 700;
+      background-color: #8ecae6;
+      box-shadow: inset 0rem 0rem 3rem white;
+      color: white;
+      height: 100%;
+      border-radius: 1rem;
+      transition: 0.3s ease-in-out;
+    }
+
+    & .buttons-left-right:hover {
+      box-shadow: inset 0rem 0rem 1rem white;
+    }
+
+    & .left-b {
+      left: 0;
+    }
+    & .right-b {
+      right: 0;
+    }
 
     & .charts {
-      display: flex;
-      flex-flow: column;
-      justify-content: center;
-      align-items: center;
-      height: 90dvh;
+      margin-top: 3rem;
+      height: 95%;
       width: 100%;
     }
 
@@ -192,12 +213,12 @@ body {
     }
 
     & .pie-chart {
-      margin-top: 2rem;
+      margin-bottom: 1rem;
       display: flex;
       flex-flow: column;
       justify-content: center;
       align-items: center;
-      height: 35%;
+      height: 30rem;
       width: 100%;
     }
     & .bar-graph {
@@ -206,11 +227,10 @@ body {
       flex-flow: column;
       justify-content: center;
       align-items: center;
-      height: 65%;
-      width: 110dvh;
+      height: 57rem;
+      width: 100%;
 
       & #bar {
-        width: 100dvw;
       }
     }
   }

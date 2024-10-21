@@ -60,7 +60,7 @@ function generate(event) {
           ],
           backgroundColor: [
             "rgb(255, 99, 132)",
-            "rgb(54, 162, 235)",
+            "rgb(75, 192, 192)",
             "rgb(255, 205, 86)",
           ],
           hoverOffset: 4,
@@ -78,7 +78,7 @@ function generate(event) {
           label: "Investimento",
           data: arraytesting.map((invested) => fix(invested.investmentMonthly)),
 
-          backgroundColor: "rgba(54, 162, 235)",
+          backgroundColor: "rgba(255, 99, 132)",
         },
         {
           label: "Rendimento",
