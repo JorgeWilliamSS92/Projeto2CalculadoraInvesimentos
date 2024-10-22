@@ -93,23 +93,66 @@
       </form>
     </section>
 
-    <section class="graph">
-      <button class="left-b buttons-left-right">&#x27e8;</button>
-      <button class="right-b buttons-left-right">&#x27e9;</button>
+    <section class="graph" id="graph">
+      <div class="div-graph">
+        <button class="left-b buttons-left-right" id="left">&#x27e8;</button>
+        <button class="right-b buttons-left-right" id="right">&#x27e9;</button>
+      </div>
 
-      <div class="charts">
-        <div class="pie-chart">
-          <h2>Resultado Total</h2>
-          <canvas id="doughnut"> </canvas>
+      <div class="graphs">
+        <div class="charts">
+          <div class="pie-chart">
+            <h2>Resultado Total</h2>
+            <canvas id="doughnut"> </canvas>
+          </div>
+          <div class="bar-graph">
+            <h2>Resultado em Períodos</h2>
+            <canvas id="bar"></canvas>
+          </div>
         </div>
-        <div class="bar-graph">
-          <h2>Resultado em Períodos</h2>
-          <canvas id="bar"></canvas>
+
+        <div class="table-reference">
+          <h1>Tabela Investimento</h1>
+          <table class="tableOne">
+            <thead>
+              <tr>
+                <th>Mês</th>
+                <th>Investimento Mensal</th>
+                <th>Rendimento Mensal</th>
+                <th>Rendimento Acumulado</th>
+                <th>Acumulado Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>R$ 1500,00</td>
+                <td>R$ 25,00</td>
+                <td>R$ 25,00</td>
+                <td>R$ 1525,00</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>R$ 2500,00</td>
+                <td>R$ 35,00</td>
+                <td>R$ 35,00</td>
+                <td>R$ 2525,00</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>R$ 3500,00</td>
+                <td>R$ 45,00</td>
+                <td>R$ 45,00</td>
+                <td>R$ 3525,00</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
 
     <script type="module" src="main.js"></script>
     <script type="module" src="chartsArquivo.js"></script>
+    <script src="buttons.js"></script>
   </body>
 </html>
