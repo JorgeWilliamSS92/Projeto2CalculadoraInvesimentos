@@ -44,6 +44,11 @@ function generate(event) {
   if (!checking(chart1) && !checking(chart2)) {
     chart1.destroy();
     chart2.destroy();
+
+    const thead0 = document.getElementById("thead");
+    const tbody0 = document.getElementById("tbody");
+    thead0.innerHTML = "";
+    tbody0.innerHTML = "";
   }
 
   chart1 = new Chart(doughnut, {
@@ -99,4 +104,30 @@ function generate(event) {
       },
     },
   });
+
+  const thead = document.getElementById("thead");
+  const tbody = document.getElementById("tbody");
+
+  thead.innerHTML = `<tr>
+                <th>Mês</th>
+                <th>Investimento Mensal</th>
+                <th>Rendimento Mensal</th>
+                <th>Rendimento Acumulado</th>
+                <th>Acumulado Total</th>
+              </tr>`;
+
+  let html = "";
+  const arrayNew2 = arraytesting;
+
+  for (let i = 0; i < arrayNew2.length; i++) {
+    html += `<tr>
+                <td>${arrayNew2[i].monthlyPeriod}</td>
+                <td>R$ ${fix(arrayNew2[i].investmentMonthly)}</td>
+                <td>R$ ${fix(arrayNew2[i].monthlyIncome)}</td>
+                <td>R$ ${fix(arrayNew2[i].totalInterestReturn)}</td>
+                <td>R$ ${fix(arrayNew2[i].totalAmount)}</td>
+              </tr>`;
+  }
+
+  tbody.innerHTML = html;
 }
