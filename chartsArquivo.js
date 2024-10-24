@@ -119,13 +119,26 @@ function generate(event) {
   let html = "";
   const arrayNew2 = arraytesting;
 
+  function formatCurrencyall(v) {
+    return v.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  }
+
   for (let i = 0; i < arrayNew2.length; i++) {
-    html += `<tr>
+    const investment = formatCurrencyall(arrayNew2[i].investmentMonthly);
+    const returnAll = formatCurrencyall(arrayNew2[i].totalInterestReturn);
+    const income = formatCurrencyall(arrayNew2[i].monthlyIncome);
+    const total = formatCurrencyall(arrayNew2[i].totalAmount);
+
+    console.log(investment, returnAll, income, total);
+    html += `<tr >
                 <td>${arrayNew2[i].monthlyPeriod}</td>
-                <td>R$ ${fix(arrayNew2[i].investmentMonthly)}</td>
-                <td>R$ ${fix(arrayNew2[i].monthlyIncome)}</td>
-                <td>R$ ${fix(arrayNew2[i].totalInterestReturn)}</td>
-                <td>R$ ${fix(arrayNew2[i].totalAmount)}</td>
+                <td>${investment}</td>
+                <td>${income}</td>
+                <td>${returnAll}</td>
+                <td>${total}</td>
               </tr>`;
   }
 
